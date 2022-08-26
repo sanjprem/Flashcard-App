@@ -21,19 +21,26 @@
 			<input v-on:keypress.enter="addNew" v-model="newBack" type="text" id="back">
 		</label>
 		<button v-on:click="addNew">Add a New Card</button>
-		<span class="error">Oops! Flashcards need a front and a back.</span>
+		<span v-show="error" class="error">Oops! Flashcards need a front and a back.</span>
 	</div>
 
 	<ul class="flashcard-list">
 		<li v-on:click="toggleCard(card)" v-for="(card, index) in cards">
-			<p v-if="!card.flipped" class="card">
-				<span v-on:click="cards.splice(index, 1)" class="delete-card">X</span>
-				<span>{{ card.front }}</span>
-			</p>
-			<p v-else class="card">
-				<span v-on:click="cards.splice(index, 1)" class="delete-card">X</span>
-				<span>{{ card.back }}</span>
-			</p>
+			<transition name="flip">
+<!--				<p v-if="!card.flipped" key="front" class="card">-->
+<!--					<span v-on:click="cards.splice(index, 1)" class="delete-card">X</span>-->
+<!--					<span>{{ card.front }}</span>-->
+<!--				</p>-->
+<!--				<p v-else class="card" key="back">-->
+<!--					<span v-on:click="cards.splice(index, 1)" class="delete-card">X</span>-->
+<!--					<span>{{ card.back }}</span>-->
+<!--				</p>-->
+				<p v-bind:key="card.flipped" class="card">
+					{{ card.flipped ? card.back : card.front }}
+					<span v-on:click="cards.splice(index, 1)" class="delete-card">X</span>
+				</p>
+
+			</transition>
 		</li>
 	</ul>
 </div>
