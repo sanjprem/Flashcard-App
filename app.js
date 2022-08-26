@@ -23,8 +23,9 @@ const cards = [
 ];
 
 // get info for new cards from the user
-    // create data properties for back and front of new cards
-    // bind those properties to the form inputs using v-model
+// create a method
+// creates a new card object containing new card information
+// pushed that card object in to the cards array
 // add new card when user hits enter or clicks button
 // delete cards
 // animate card flip
@@ -39,6 +40,13 @@ new Vue({
     methods: {
         toggleCard: function (card) {
             card.flipped = !card.flipped;
+        },
+        addNew: function () {
+            this.cards.push({
+                front: this.newFront,
+                back: this.newBack,
+                flipped: false
+            });
         }
     }
 });
