@@ -22,8 +22,6 @@ const cards = [
     },
 ];
 
-// display our data
-// on click: flip cards back and forth
 // get info for new cards from the user
 // add new card when user hits enter or clicks button
 // delete cards
@@ -34,5 +32,9 @@ new Vue({
     data: {
         cards: cards,
     },
-    methods: {}
+    methods: {
+        toggleCard: function (card) {
+            card.flipped = !card.flipped;
+        }
+    }
 });
