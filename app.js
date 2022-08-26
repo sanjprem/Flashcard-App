@@ -23,6 +23,8 @@ const cards = [
 ];
 
 // get info for new cards from the user
+    // create data properties for back and front of new cards
+    // bind those properties to the form inputs using v-model
 // add new card when user hits enter or clicks button
 // delete cards
 // animate card flip
@@ -31,6 +33,8 @@ new Vue({
     el: '#flashcard-app',
     data: {
         cards: cards,
+        newFront: '',
+        newBack: ''
     },
     methods: {
         toggleCard: function (card) {
