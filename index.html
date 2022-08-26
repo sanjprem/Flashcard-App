@@ -25,12 +25,14 @@
 	</div>
 
 	<ul class="flashcard-list">
-		<li>
-			<p class="card">
+		<li v-on:click="toggleCard(card)" v-for="card in cards">
+			<p v-if="!card.flipped" class="card">
 				<span class="delete-card">X</span>
+				<span>{{ card.front }}</span>
 			</p>
-			<p class="card">
+			<p v-else class="card">
 				<span class="delete-card">X</span>
+				<span>{{ card.back }}</span>
 			</p>
 		</li>
 	</ul>
